@@ -1,6 +1,6 @@
 package co.edu.utp.isc.gia.pruebas.web.dto;
 
-import co.edu.utp.isc.gia.pruebas.data.entity.Pregunta;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import java.io.Serializable;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -13,10 +13,12 @@ import lombok.Setter;
 @Builder
 @Setter
 @Getter
+@JsonInclude(JsonInclude.Include.NON_NULL) //No muestra valores nulos 
 public class PruebaDto implements Serializable{
     private Long id;
     public String descripcion;
     public String enlace;
-    public Pregunta pregunta;
     public float nota;
+    public Long id_preguntas;
+
 }

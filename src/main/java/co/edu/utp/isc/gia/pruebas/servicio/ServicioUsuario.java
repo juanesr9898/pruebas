@@ -1,9 +1,12 @@
 package co.edu.utp.isc.gia.pruebas.servicio;
 
-import co.edu.utp.isc.gia.pruebas.data.entity.Prueba;
 import co.edu.utp.isc.gia.pruebas.data.entity.Usuario;
+import co.edu.utp.isc.gia.pruebas.data.entity.usuarios.Docente;
+import co.edu.utp.isc.gia.pruebas.data.entity.usuarios.Estudiante;
 import co.edu.utp.isc.gia.pruebas.data.repositorio.RepositorioUsuario;
 import co.edu.utp.isc.gia.pruebas.web.dto.UsuarioDto;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -15,16 +18,24 @@ public class ServicioUsuario {
     private ModelMapper modelMapper = new ModelMapper();
     private RepositorioUsuario repositorioUsuario;
      
-    public UsuarioDto guardar(UsuarioDto usuarioDto){        
-        Usuario usuario = modelMapper.map(usuarioDto, Usuario.class);
-        usuario = repositorioUsuario.save(usuario);         
-        usuarioDto = modelMapper.map(usuario, UsuarioDto.class);
+    public UsuarioDto guardar(UsuarioDto usuarioDto){
+        if (usuarioDto.getTipo_usuario() == 1){
+            Estudiante estudiante = modelMapper.map(usuarioDto, Estudiante.class);
+            usuarioDto = modelMapper.map(estudiante, UsuarioDto.class);
+            estudiante = repositorioUsuario.save(estudiante);             
+        }else{
+            Docente docente = modelMapper.map(usuarioDto, Docente.class);
+            usuarioDto = modelMapper.map(docente, UsuarioDto.class);
+            docente = repositorioUsuario.save(docente); 
+        }
         return usuarioDto;
     }
      
-    public UsuarioDto listarTodos(){        
-        Iterable<Usuario> usuarios = repositorioUsuario.findAll();
-        return modelMapper.map(usuarios.iterator(), UsuarioDto.class);
+    public List<UsuarioDto> listarTodos(){         
+        List<Usuario> usuarios = (List<Usuario>) repositorioUsuario.findAll();
+        List<UsuarioDto> usuarioDto = new ArrayList<UsuarioDto>();        
+        usuarios.forEach((usuario) -> {usuarioDto.add(modelMapper.map(usuario, UsuarioDto.class));});
+        return usuarioDto;
      }
     
     public UsuarioDto findOne(Long id){        

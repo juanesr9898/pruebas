@@ -2,6 +2,7 @@ package co.edu.utp.isc.gia.pruebas.web.controller;
 
 import co.edu.utp.isc.gia.pruebas.servicio.ServicioPrueba;
 import co.edu.utp.isc.gia.pruebas.web.dto.PruebaDto;
+import java.util.List;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,7 +25,7 @@ public class ControladorPrueba {
     }
     
     @GetMapping()
-    public PruebaDto listarTodos(){
+    public List<PruebaDto> listarTodos(){
         return servicioPrueba.listarTodos();
     }
     
@@ -33,7 +34,7 @@ public class ControladorPrueba {
         return servicioPrueba.findOne(id);
     }
     
-    //@GetMapping("/{id}")
+    @GetMapping("presentar/{id}")
     public PruebaDto presentarPrueba(@PathVariable("id") Long id){
         return servicioPrueba.findOne(id);
     }

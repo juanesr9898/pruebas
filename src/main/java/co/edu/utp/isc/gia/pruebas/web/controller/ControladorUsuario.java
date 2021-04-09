@@ -2,6 +2,7 @@ package co.edu.utp.isc.gia.pruebas.web.controller;
 
 import co.edu.utp.isc.gia.pruebas.servicio.ServicioUsuario;
 import co.edu.utp.isc.gia.pruebas.web.dto.UsuarioDto;
+import java.util.List;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@AllArgsConstructor //constructor para ServicioUsuario
+@AllArgsConstructor
 @RestController
 @RequestMapping("usuarios")
 public class ControladorUsuario {
@@ -24,7 +25,7 @@ public class ControladorUsuario {
     }
     
     @GetMapping()
-    public UsuarioDto listarTodos(){
+    public List<UsuarioDto> listarTodos(){
         return servicioUsuario.listarTodos();
     }
     
@@ -42,6 +43,5 @@ public class ControladorUsuario {
     public UsuarioDto removeOne(@PathVariable Long id){
         return servicioUsuario.removeOne(id);
     }
-    
-    //Debe de haber otra donde los usuarios accedan a la parte de pruebas
+
 }

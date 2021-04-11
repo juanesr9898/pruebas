@@ -12,7 +12,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.modelmapper.ModelMapper;
 
-@AllArgsConstructor //constructor para model mapper y el repositorio usuario
+@AllArgsConstructor 
 @Service
 public class ServicioUsuario {
     private ModelMapper modelMapper = new ModelMapper();
@@ -23,7 +23,7 @@ public class ServicioUsuario {
             Estudiante estudiante = modelMapper.map(usuarioDto, Estudiante.class);
             usuarioDto = modelMapper.map(estudiante, UsuarioDto.class);
             estudiante = repositorioUsuario.save(estudiante);             
-        }else{
+        }else if(usuarioDto.getTipo_usuario() == 0){
             Docente docente = modelMapper.map(usuarioDto, Docente.class);
             usuarioDto = modelMapper.map(docente, UsuarioDto.class);
             docente = repositorioUsuario.save(docente); 
@@ -43,9 +43,7 @@ public class ServicioUsuario {
         return modelMapper.map(user.get(), UsuarioDto.class);
     }    
     
-    public UsuarioDto updateOne(Long id, int tipo_usuario, UsuarioDto usuarioDto){
-        usuarioDto.setId(id);
-        usuarioDto.setTipo_usuario(tipo_usuario);
+    public UsuarioDto updateOne(Long id, UsuarioDto usuarioDto){
         repositorioUsuario.save(modelMapper.map(usuarioDto, Usuario.class));    
         return findOne(id);
     }

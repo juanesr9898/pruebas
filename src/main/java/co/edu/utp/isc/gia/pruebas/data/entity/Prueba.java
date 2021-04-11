@@ -26,6 +26,7 @@ import lombok.Setter;
 @Entity
 @Data
 @Table(name = "Pruebas")
+//@Inheritance(strategy=InheritanceType.JOINED)
 public class Prueba implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,10 +34,10 @@ public class Prueba implements Serializable{
     @Column(nullable = true)
     public String descripcion;
     public String enlace;
-    public float nota;
+    public double nota;
     
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "Prueba_id")
+    @JoinColumn(name = "Pruebas_id")
     private List<Pregunta> preguntas;
 
 }

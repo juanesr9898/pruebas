@@ -35,12 +35,12 @@ public class ControladorUsuario {
     }
     
     @PutMapping("/{id}")
-    public UsuarioDto updateOne(@PathVariable Long id,@PathVariable int tipo_usuario, @RequestBody UsuarioDto usuario){
-        return servicioUsuario.updateOne(id, tipo_usuario, usuario);
+    public UsuarioDto updateOne(@PathVariable("id") Long id, @RequestBody UsuarioDto usuarioDto){
+        return servicioUsuario.updateOne(id, usuarioDto);
     }
     
     @DeleteMapping("/{id}")
-    public UsuarioDto removeOne(@PathVariable Long id){
+    public UsuarioDto removeOne(@PathVariable("id") Long id){
         return servicioUsuario.removeOne(id);
     }
 

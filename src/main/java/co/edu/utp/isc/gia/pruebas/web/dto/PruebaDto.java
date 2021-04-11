@@ -19,6 +19,4 @@ public class PruebaDto implements Serializable{
     public String descripcion;
     public String enlace;
     public float nota;
-    public Long id_preguntas;
-
 }

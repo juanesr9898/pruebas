@@ -3,8 +3,6 @@ package co.edu.utp.isc.gia.pruebas.data.entity;
 import java.io.Serializable;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.DiscriminatorColumn;
-import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -36,14 +34,18 @@ public class Pregunta implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;    
     public String pregunta;
-    public String respuesta_correcta;
-    private float peso;
-    public int tipo_pregunta;
+    public String respuesta;
+    private double peso;
     @Column(nullable = true) //Puede o no terner una imagen la pregunta
     public String imagen;    
     // Que columna en la tabla Preguntas tiene la FK (Llave foranea)
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "Prueba_id")
+    @JoinColumn(name = "Pruebas_id")
     private Prueba prueba;
-    
+    //private Long Pruebas_id;
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "Usuarios_id")
+    private Usuario usuario;
+   // private Long Usuarios_id;
+
 }

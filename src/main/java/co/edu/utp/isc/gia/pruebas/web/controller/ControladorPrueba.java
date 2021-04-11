@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@AllArgsConstructor //constructor para servicioPrueba
+@AllArgsConstructor
 @RestController
 @RequestMapping("prueba")
 public class ControladorPrueba {
@@ -40,12 +40,12 @@ public class ControladorPrueba {
     }
     
     @PutMapping("/{id}")
-    public PruebaDto updateOne(@PathVariable Long id, @RequestBody PruebaDto pruebaDto){
+    public PruebaDto updateOne(@PathVariable("id") Long id, @RequestBody PruebaDto pruebaDto){
         return servicioPrueba.updateOne(id, pruebaDto);
     }
     
     @DeleteMapping("/{id}")
-    public PruebaDto removeOne(@PathVariable Long id){
+    public PruebaDto removeOne(@PathVariable("id") Long id){
         return servicioPrueba.removeOne(id);
     }
 }

@@ -20,22 +20,10 @@ public class ServicioPrueba {
     
     public PruebaDto crearPrueba(PruebaDto pruebaDto) {
         Prueba prueba = modelMapper.map(pruebaDto, Prueba.class);        
-        prueba = repositorioPrueba.save(prueba);
         pruebaDto = modelMapper.map(prueba, PruebaDto.class);
+        prueba = repositorioPrueba.save(prueba);
         return pruebaDto;
     }
-    
-//    public PruebaDto guardar(List<Respuesta> respuestas, Usuario usuario, Long id_prueba) {
-//        PruebaDto pruebaDto = findOne(id_prueba); //busco la prueba al usuario
-//        List<Pregunta> preguntas = (List<Pregunta>) pruebaDto.getPreguntas();
-//        float valor_preguntas = preguntas.size() / 5; //Número de preguntas / 5
-//        for(int i = 0; i < respuestas.size(); ++i) //recorro lista de respuestas
-//            //comparo la lista de respuesta con la ista de respuestas correctas
-//            if(respuestas.get(i).respuesta == preguntas.get(i).respuesta_correcta) {
-//                pruebaDto.setNota(pruebaDto.getNota() + valor_preguntas);
-//         }     
-//        return pruebaDto;
-//    }
     
     public List<PruebaDto> listarTodos(){         
         List<Prueba> pruebas = (List<Prueba>) repositorioPrueba.findAll();
@@ -50,7 +38,6 @@ public class ServicioPrueba {
     }    
     
     public PruebaDto updateOne(Long id, PruebaDto PruebaDto){
-        PruebaDto.setId(id);
         repositorioPrueba.save(modelMapper.map(PruebaDto, Prueba.class));    
         return findOne(id);
     }

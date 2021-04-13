@@ -30,14 +30,21 @@ import lombok.Setter;
 public class Prueba implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(unique = true)
     private Long id;
     @Column(nullable = true)
     public String descripcion;
     public String enlace;
-    public double nota;
-    
+    //public double nota;    
+    // Una prueba tiene varias preguntas
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "Pruebas_id")
+    @JoinColumn(name = "Prueba_id")
     private List<Pregunta> preguntas;
-
+    // Una prueba tiene varias respuestas
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "Prueba_id")
+    private List<Respuesta> Respuestas;
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "Prueba_id")
+    private List<Nota> Notas;
 }

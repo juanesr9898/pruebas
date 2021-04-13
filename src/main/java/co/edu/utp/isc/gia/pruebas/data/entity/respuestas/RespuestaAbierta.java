@@ -1,6 +1,7 @@
 package co.edu.utp.isc.gia.pruebas.data.entity.respuestas;
 
 import co.edu.utp.isc.gia.pruebas.data.entity.Pregunta;
+import co.edu.utp.isc.gia.pruebas.data.entity.Respuesta;
 import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
@@ -17,7 +18,7 @@ import lombok.Setter;
 @Entity
 @Table(name = "Respuestas_abiertas")
 //@Inheritance(strategy=InheritanceType.JOINED)
-public class RespuestaAbierta extends Pregunta{
+public class RespuestaAbierta extends Respuesta{
     private String respuesta_abierta;
 
 }

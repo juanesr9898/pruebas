@@ -28,21 +28,20 @@ import lombok.Setter;
 @Entity
 @Data
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@Table(name = "Preguntas")
-public class Pregunta implements Serializable{
+@Table(name = "Respuestas")
+public class Respuesta implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true)
-    private Long id;    
-    public String pregunta;
-    public String respuesta;
-    public double peso;
-    @Column(nullable = true) //Puede o no terner una imagen la pregunta
-    public String imagen;   
-    // Que columna en la tabla Preguntas tiene la FK (Llave foranea)
-    // Varias preguntas estan en una prueba
+    private Long id;
+   // Que columna en la tabla Preguntas tiene la FK (Llave foranea)
+    // Varias respuestas estan en una prueba
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "Prueba_id")
     private Prueba prueba;
-     
+    // Varios usuarios responden 
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "Usuario_id")
+    private Usuario usuario;
+    
 }

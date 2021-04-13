@@ -3,7 +3,6 @@ package co.edu.utp.isc.gia.pruebas.web.controller;
 import co.edu.utp.isc.gia.pruebas.servicio.ServicioPregunta;
 import co.edu.utp.isc.gia.pruebas.web.dto.PreguntaDto;
 import co.edu.utp.isc.gia.pruebas.exceptions.MensajeException;
-import static java.rmi.server.LogStream.log;
 import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -30,7 +29,6 @@ public class ControladorPregunta {
     
     @GetMapping()
     public List<PreguntaDto> listarPreguntas() throws MensajeException{      
-        log.info("PreguntaDto: " + servicioPregunta.listarPreguntas());
         return servicioPregunta.listarPreguntas();
     }
     

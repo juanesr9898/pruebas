@@ -38,6 +38,9 @@ public class Usuario implements Serializable{
     private String contraseña;
     public int tipo_usuario;
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "Usuarios_id")
-    private List<Pregunta> preguntas;
+    @JoinColumn(name = "Usuario_id")
+    private List<Respuesta> respuestas;
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "Usuario_id")
+    private List<Nota> nota;
 }

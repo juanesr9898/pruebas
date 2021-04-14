@@ -15,7 +15,7 @@ import lombok.Setter;
 @Setter
 @Getter
 @Entity
-@Table(name = "Estudiantes")
+@Table(name = "Estudiante")
 public class Estudiante extends Usuario{
     public String curso;
 }

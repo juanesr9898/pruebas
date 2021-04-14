@@ -1,9 +1,12 @@
 package co.edu.utp.isc.gia.pruebas.servicio;
 
 import co.edu.utp.isc.gia.pruebas.data.entity.Prueba;
+import co.edu.utp.isc.gia.pruebas.data.entity.Usuario;
+import co.edu.utp.isc.gia.pruebas.data.entity.usuarios.Docente;
 //import co.edu.utp.isc.gia.pruebas.data.entity.Usuario;
 //import co.edu.utp.isc.gia.pruebas.data.entity.Pregunta;
 import co.edu.utp.isc.gia.pruebas.data.repositorio.RepositorioPrueba;
+import co.edu.utp.isc.gia.pruebas.data.repositorio.RepositorioUsuario;
 import co.edu.utp.isc.gia.pruebas.web.dto.PruebaDto;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,9 +20,14 @@ import org.springframework.stereotype.Service;
 public class ServicioPrueba {
     private ModelMapper modelMapper = new ModelMapper();
     private RepositorioPrueba repositorioPrueba;
+    private RepositorioUsuario repositorioUsuario;
     
     public PruebaDto crearPrueba(PruebaDto pruebaDto) {
-        Prueba prueba = modelMapper.map(pruebaDto, Prueba.class);        
+        Optional <Usuario> usuarioOpt = repositorioUsuario.findById(pruebaDto.getDocenteID()); 
+        Usuario usuario = usuarioOpt.get();
+        Docente docente = modelMapper.map(usuario, Docente.class);
+        Prueba prueba = modelMapper.map(pruebaDto, Prueba.class); 
+        prueba.setDocente(docente);
         pruebaDto = modelMapper.map(prueba, PruebaDto.class);
         prueba = repositorioPrueba.save(prueba);
         return pruebaDto;

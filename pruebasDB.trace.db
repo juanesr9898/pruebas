@@ -1,0 +1,34 @@
+2021-04-13 20:10:43 jdbc[25]: null
+org.h2.message.DbException: La conexión no fue cerrada por la aplicación y esta siendo limpiada (garbage collected)
+The connection was not closed by the application and is garbage collected [90018-200]
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.message.DbException.get(DbException.java:170)
+	at org.h2.jdbc.JdbcConnection.closeOld(JdbcConnection.java:245)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:186)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:152)
+	at org.h2.Driver.connect(Driver.java:69)
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:138)
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:358)
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:206)
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:477)
+	at com.zaxxer.hikari.pool.HikariPool.access$100(HikariPool.java:71)
+	at com.zaxxer.hikari.pool.HikariPool$PoolEntryCreator.call(HikariPool.java:725)
+	at com.zaxxer.hikari.pool.HikariPool$PoolEntryCreator.call(HikariPool.java:711)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientConnectionException: La conexión no fue cerrada por la aplicación y esta siendo limpiada (garbage collected)
+The connection was not closed by the application and is garbage collected [90018-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:622)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 18 more
+2021-04-13 20:41:33 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLDataException: Conversión de datos fallida, convirtiendo "'' (USUARIOS: ""ID"" BIGINT DEFAULT NEXT VALUE FOR ""PUBLIC"".""SYSTEM_SEQUENCE_48521CA4_636F_4584_A97A_757FCAE77326"" NOT NULL NULL_TO_DEFAULT SEQUENCE ""PUBLIC"".""SYSTEM_SEQUENCE_48521CA4_636F_4584_A97A_757FCAE77326"")"
+Data conversion error converting "'' (USUARIOS: ""ID"" BIGINT DEFAULT NEXT VALUE FOR ""PUBLIC"".""SYSTEM_SEQUENCE_48521CA4_636F_4584_A97A_757FCAE77326"" NOT NULL NULL_TO_DEFAULT SEQUENCE ""PUBLIC"".""SYSTEM_SEQUENCE_48521CA4_636F_4584_A97A_757FCAE77326"")"; SQL statement:
+INSERT INTO "PUBLIC"."USUARIOS"("DTYPE","ID","CONTRASEÑA","EMAIL","NOMBRE","TIPO_USUARIO","USERID","GRUPOS","MATERIAS","CURSO")VALUES(?,?,?,?,?,?,?,?,?,?) [22018-200]
+2021-04-13 20:41:33 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLDataException: Conversión de datos fallida, convirtiendo "'' (USUARIOS: ""ID"" BIGINT DEFAULT NEXT VALUE FOR ""PUBLIC"".""SYSTEM_SEQUENCE_48521CA4_636F_4584_A97A_757FCAE77326"" NOT NULL NULL_TO_DEFAULT SEQUENCE ""PUBLIC"".""SYSTEM_SEQUENCE_48521CA4_636F_4584_A97A_757FCAE77326"")"
+Data conversion error converting "'' (USUARIOS: ""ID"" BIGINT DEFAULT NEXT VALUE FOR ""PUBLIC"".""SYSTEM_SEQUENCE_48521CA4_636F_4584_A97A_757FCAE77326"" NOT NULL NULL_TO_DEFAULT SEQUENCE ""PUBLIC"".""SYSTEM_SEQUENCE_48521CA4_636F_4584_A97A_757FCAE77326"")"; SQL statement:
+INSERT INTO "PUBLIC"."USUARIOS"("DTYPE","ID","CONTRASEÑA","EMAIL","NOMBRE","TIPO_USUARIO","USERID","GRUPOS","MATERIAS","CURSO")VALUES(?,?,?,?,?,?,?,?,?,?) [22018-200]

@@ -25,7 +25,6 @@ import lombok.Setter;
 @Entity
 @Data
 @Table(name = "Usuarios")
-//@Inheritance(strategy=InheritanceType.JOINED)
 public class Usuario implements Serializable{    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -37,6 +36,9 @@ public class Usuario implements Serializable{
     public String email;
     private String contraseña;
     public int tipo_usuario;
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "Docente_id")
+    private List<Prueba> pruebas;
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "Usuario_id")
     private List<Respuesta> respuestas;

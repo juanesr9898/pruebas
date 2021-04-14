@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 @Getter
 @Entity
-@Table(name = "Docentes")
+@Table(name = "Docente")
 public class Docente extends Usuario{
     public String materias;
     public String grupos;

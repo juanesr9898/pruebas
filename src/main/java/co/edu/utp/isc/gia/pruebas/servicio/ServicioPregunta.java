@@ -40,8 +40,7 @@ public class ServicioPregunta {
         if(pruebaOpt == null || !pruebaOpt.isPresent()){
             throw new MensajeException("ERROR! La ID de la prueba no existe.");
         }           
-        Prueba prueba = pruebaOpt.get();
-        
+        Prueba prueba = pruebaOpt.get();        
         Pregunta pregunta = modelMapper.map(preguntaDto, Pregunta.class);
         log.warn("Pregunta : " + pregunta);
         pregunta.setPrueba(prueba); //Asigno la prueba despues de obtenerla con la ID

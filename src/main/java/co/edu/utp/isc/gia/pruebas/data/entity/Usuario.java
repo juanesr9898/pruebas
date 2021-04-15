@@ -2,7 +2,6 @@ package co.edu.utp.isc.gia.pruebas.data.entity;
 
 import java.io.Serializable;
 import java.util.List;
-import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,8 +10,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -34,7 +31,7 @@ public class Usuario implements Serializable{
     @Column(unique = true)
     private Long id;            //Tanto la id, como el username deben ser valores unicos
     @Column(unique = true)
-    private String username;
+    private String userID;
     public String nombre;
     public String email;
     private String contraseña;
@@ -50,7 +47,5 @@ public class Usuario implements Serializable{
     @JoinColumn(name = "Estudiante_id")
     private List<Nota> nota;
     
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "Authorities_users", joinColumns = @JoinColumn(name = "Usuario_id"), inverseJoinColumns = @JoinColumn(name = "authority_id"))
-    private Set<Authority> authority;
+
 }

@@ -19,7 +19,7 @@ import lombok.Setter;
 public class UsuarioDto implements Serializable {
     private Long id;
     public String nombre;
-    private String username;
+    private String userID;
     public String email;
     private String contraseña;
     @JsonProperty(access = Access.WRITE_ONLY) //Cuando se liste, no mostrar el tipo de usuario

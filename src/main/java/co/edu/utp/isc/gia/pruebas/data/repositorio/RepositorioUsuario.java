@@ -12,9 +12,6 @@ public interface RepositorioUsuario extends CrudRepository<Usuario, Long> {
     Iterable<Usuario> findAll ();
 
     @Override
-    void deleteById (Long id);
-    
-    public Optional<Usuario> findByUsername(String username);
-    
+    void deleteById (Long id);    
 }
 

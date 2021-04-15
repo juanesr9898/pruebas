@@ -1,10 +1,7 @@
 package co.edu.utp.isc.gia.pruebas.data.entity.respuestas;
 
-import co.edu.utp.isc.gia.pruebas.data.entity.Pregunta;
 import co.edu.utp.isc.gia.pruebas.data.entity.Respuesta;
 import javax.persistence.Entity;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

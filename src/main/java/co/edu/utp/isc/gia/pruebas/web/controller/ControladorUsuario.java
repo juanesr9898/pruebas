@@ -4,6 +4,7 @@ import co.edu.utp.isc.gia.pruebas.servicio.ServicioUsuario;
 import co.edu.utp.isc.gia.pruebas.web.dto.UsuarioDto;
 import java.util.List;
 import lombok.AllArgsConstructor;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @AllArgsConstructor
 @RestController
+@CrossOrigin(origins = "https://localhost:4200") //Verificar
 @RequestMapping("usuarios")
 public class ControladorUsuario {
     private ServicioUsuario servicioUsuario;
@@ -22,6 +24,26 @@ public class ControladorUsuario {
     @PostMapping()
     public UsuarioDto guardar(@RequestBody UsuarioDto usuarioDto){
         return servicioUsuario.guardar(usuarioDto); 
+    }
+    
+    @GetMapping({"/login"})
+    public String index(){
+        return "index"; 
+    }
+    
+    @GetMapping("/menu")
+    public String menu() {
+        return "menu";
+    }
+	
+    @GetMapping("/user")
+    public String user() {
+    	return "user";
+    }
+	
+    @GetMapping("/admin")
+    public String admin() {
+	return "admin";
     }
     
     @GetMapping()

@@ -19,11 +19,11 @@ public class ServicioUsuario {
     private RepositorioUsuario repositorioUsuario;
      
     public UsuarioDto guardar(UsuarioDto usuarioDto){
-        if (usuarioDto.getTipo_usuario() == 1){
+        if (usuarioDto.getTipoUsuario() == 1){
             Estudiante estudiante = modelMapper.map(usuarioDto, Estudiante.class);
             usuarioDto = modelMapper.map(estudiante, UsuarioDto.class);
             estudiante = repositorioUsuario.save(estudiante);             
-        }else if(usuarioDto.getTipo_usuario() == 0){
+        }else if(usuarioDto.getTipoUsuario() == 0){
             Docente docente = modelMapper.map(usuarioDto, Docente.class);
             usuarioDto = modelMapper.map(docente, UsuarioDto.class);
             docente = repositorioUsuario.save(docente); 
@@ -55,8 +55,4 @@ public class ServicioUsuario {
         repositorioUsuario.deleteById(id);
         return usuarioDto;        
     }
-    
-//    public Prueba verPrueba(Long id){
-//        
-//    }
 }

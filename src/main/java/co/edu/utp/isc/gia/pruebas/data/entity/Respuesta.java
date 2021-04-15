@@ -1,5 +1,6 @@
 package co.edu.utp.isc.gia.pruebas.data.entity;
 
+import co.edu.utp.isc.gia.pruebas.data.entity.usuarios.Estudiante;
 import java.io.Serializable;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -41,7 +42,7 @@ public class Respuesta implements Serializable {
     private Prueba prueba;
     // Varios usuarios responden 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "Usuario_id")
-    private Usuario usuario;
+    @JoinColumn(name = "Estudiante_id")
+    private Estudiante estudiante;
     
 }

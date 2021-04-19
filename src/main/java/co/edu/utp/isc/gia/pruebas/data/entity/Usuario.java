@@ -34,18 +34,17 @@ public class Usuario implements Serializable{
     private String userID;
     public String nombre;
     public String email;
-    private String contraseña;
+    @Column(name="tipoUsuario")
     public int tipoUsuario;
+    private String password;
     
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "Docente_id")
     private List<Prueba> pruebas;
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "Estudiante_id")
     private List<Respuesta> respuestas;
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "Estudiante_id")
     private List<Nota> nota;
-    
-
 }

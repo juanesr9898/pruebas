@@ -29,7 +29,6 @@ import lombok.Setter;
 @Entity
 @Data
 @Table(name = "Pruebas")
-//@Inheritance(strategy=InheritanceType.JOINED)
 public class Prueba implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

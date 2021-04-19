@@ -9,16 +9,19 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.modelmapper.ModelMapper;
 
 @AllArgsConstructor 
 @Service
+@Slf4j
 public class ServicioUsuario {
     private ModelMapper modelMapper = new ModelMapper();
     private RepositorioUsuario repositorioUsuario;
      
     public UsuarioDto guardar(UsuarioDto usuarioDto){
+        log.warn("Dto: " + usuarioDto);
         if (usuarioDto.getTipoUsuario() == 1){
             Estudiante estudiante = modelMapper.map(usuarioDto, Estudiante.class);
             usuarioDto = modelMapper.map(estudiante, UsuarioDto.class);
@@ -39,13 +42,25 @@ public class ServicioUsuario {
      }
     
     public UsuarioDto findOne(Long id){        
-        Optional<Usuario> user = repositorioUsuario.findById(id);         
+        Optional<Usuario> user = repositorioUsuario.findById(id);   
         return modelMapper.map(user.get(), UsuarioDto.class);
     }    
     
     public UsuarioDto updateOne(Long id, UsuarioDto usuarioDto){
-        repositorioUsuario.save(modelMapper.map(usuarioDto, Usuario.class));    
-        return findOne(id);
+        if (usuarioDto.getTipoUsuario() == 1){
+            Estudiante estudiante = modelMapper.map(usuarioDto, Estudiante.class);
+            usuarioDto = modelMapper.map(estudiante, UsuarioDto.class);
+            estudiante.setId(id);
+            estudiante = repositorioUsuario.save(estudiante);             
+        }
+        else if(usuarioDto.getTipoUsuario() == 0){
+            Docente docente = modelMapper.map(usuarioDto, Docente.class);
+            usuarioDto = modelMapper.map(docente, UsuarioDto.class);
+            docente.setId(id);
+            docente = repositorioUsuario.save(docente);    
+        }
+        return usuarioDto;
+        //return findOne(id);
     }
     
     public UsuarioDto removeOne(Long id){

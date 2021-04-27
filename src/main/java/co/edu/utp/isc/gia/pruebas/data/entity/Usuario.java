@@ -38,13 +38,13 @@ public class Usuario implements Serializable{
     public int tipoUsuario;
     private String password;
     
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.LAZY)
     @JoinColumn(name = "Docente_id")
     private List<Prueba> pruebas;
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.LAZY)
     @JoinColumn(name = "Estudiante_id")
     private List<Respuesta> respuestas;
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.LAZY)
     @JoinColumn(name = "Estudiante_id")
     private List<Nota> nota;
 }

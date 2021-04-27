@@ -4,6 +4,7 @@ import co.edu.utp.isc.gia.pruebas.data.entity.Usuario;
 import co.edu.utp.isc.gia.pruebas.data.entity.usuarios.Docente;
 import co.edu.utp.isc.gia.pruebas.data.entity.usuarios.Estudiante;
 import co.edu.utp.isc.gia.pruebas.data.repositorio.RepositorioUsuario;
+import co.edu.utp.isc.gia.pruebas.exceptions.MensajeException;
 import co.edu.utp.isc.gia.pruebas.web.dto.UsuarioDto;
 import java.util.ArrayList;
 import java.util.List;
@@ -41,10 +42,18 @@ public class ServicioUsuario {
         return usuarioDto;
      }
     
-    public UsuarioDto findOne(Long id){        
-        Optional<Usuario> user = repositorioUsuario.findById(id);   
-        return modelMapper.map(user.get(), UsuarioDto.class);
-    }    
+    public UsuarioDto findOne(Long id)throws MensajeException{        
+        return modelMapper.map(findUsuario(id), UsuarioDto.class);
+    }
+    
+    protected Usuario findUsuario(Long id)throws MensajeException{        
+        Optional<Usuario> user = repositorioUsuario.findById(id);
+        log.warn("user"+user);
+        if(!user.isPresent()){
+            throw new MensajeException("ERROR! El usuario no existe.");
+        }
+        return user.get();
+    }
     
     public UsuarioDto updateOne(Long id, UsuarioDto usuarioDto){
         if (usuarioDto.getTipoUsuario() == 1){
@@ -60,7 +69,6 @@ public class ServicioUsuario {
             docente = repositorioUsuario.save(docente);    
         }
         return usuarioDto;
-        //return findOne(id);
     }
     
     public UsuarioDto removeOne(Long id){

@@ -1,5 +1,6 @@
 package co.edu.utp.isc.gia.pruebas.web.controller;
 
+import co.edu.utp.isc.gia.pruebas.exceptions.MensajeException;
 import co.edu.utp.isc.gia.pruebas.servicio.ServicioUsuario;
 import co.edu.utp.isc.gia.pruebas.web.dto.UsuarioDto;
 import java.util.List;
@@ -32,9 +33,10 @@ public class ControladorUsuario {
     }
     
     @GetMapping("/{id}")
-    public UsuarioDto findOne(@PathVariable("id") Long id){
+    public UsuarioDto findOne(@PathVariable("id") Long id) throws MensajeException{
         return servicioUsuario.findOne(id);
     }
+    
     
     @PutMapping("/{id}")
     public UsuarioDto updateOne(@PathVariable("id") Long id, @RequestBody UsuarioDto usuarioDto){

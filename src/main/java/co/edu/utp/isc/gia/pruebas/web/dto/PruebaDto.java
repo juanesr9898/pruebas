@@ -7,12 +7,14 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 @Setter
 @Getter
+@ToString
 @JsonInclude(JsonInclude.Include.NON_NULL) //No muestra valores nulos 
 public class PruebaDto implements Serializable{
     private Long id;

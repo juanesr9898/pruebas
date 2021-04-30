@@ -35,14 +35,14 @@ public class Respuesta implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true)
     private Long id;
-   // Que columna en la tabla Preguntas tiene la FK (Llave foranea)
+    // Que columna en la tabla Preguntas tiene la FK (Llave foranea)
     // Varias respuestas estan en una prueba
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "Prueba_id")
     private Prueba prueba;
     // Varios usuarios responden 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "Estudiante_id")
-    private Estudiante estudiante;
+    private Usuario usuario;
     
 }

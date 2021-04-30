@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RestController;
 @AllArgsConstructor
 @RestController
 @RequestMapping("usuarios")
-@CrossOrigin(origins = "https://localhost:4200") //Verificar
 public class ControladorUsuario {
     private ServicioUsuario servicioUsuario;
     

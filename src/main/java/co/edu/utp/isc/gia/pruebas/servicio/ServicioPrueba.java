@@ -7,12 +7,9 @@ import co.edu.utp.isc.gia.pruebas.data.repositorio.RepositorioPrueba;
 import co.edu.utp.isc.gia.pruebas.data.repositorio.RepositorioUsuario;
 import co.edu.utp.isc.gia.pruebas.exceptions.MensajeException;
 import co.edu.utp.isc.gia.pruebas.web.dto.PruebaDto;
-import co.edu.utp.isc.gia.pruebas.web.dto.UsuarioDto;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
-import java.util.function.Consumer;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
@@ -24,7 +21,6 @@ import org.springframework.stereotype.Service;
 public class ServicioPrueba {
     private ModelMapper modelMapper = new ModelMapper();
     private RepositorioPrueba repositorioPrueba;
-    private ServicioUsuario servicioUsuario;
     private RepositorioUsuario repositorioUsuario;
     
     public PruebaDto crearPrueba(PruebaDto pruebaDto) throws MensajeException{

@@ -51,6 +51,24 @@ public class ServicioPregunta {
         return preguntaDto;
     }
 
+    public List<PreguntaDto> FindAllByUser(Long id) throws MensajeException{   
+        log.info("ID : " + id);
+        if( id == null ){
+            throw new MensajeException("ERROR! ID = null .");
+        }
+        List<PreguntaDto> preguntaDto = listarPreguntas();   //Todas las preguntas 
+        List<PreguntaDto> preguntaDtoByID = new ArrayList<PreguntaDto>(); 
+        for (PreguntaDto prueba : preguntaDto){            
+            if(prueba.getPruebaID() == id){
+                preguntaDtoByID.add(prueba);
+            }
+        }
+        if( preguntaDtoByID == null ){
+            throw new MensajeException("ERROR! No hay preguntas asociadas a la prueba especificada.");
+        }
+        return preguntaDtoByID;
+    }  
+    
     public List<PreguntaDto> listarPreguntas() throws MensajeException{
          if (repositorioPregunta.findAll() == null){
             throw new MensajeException("No hay preguntas creadas todavia.");

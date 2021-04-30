@@ -13,7 +13,7 @@ import lombok.Setter;
 @Setter
 @Getter
 @Entity
-@Table(name = "Respuestas_abiertas")
+@Table(name = "Respuesta_Abierta")
 //@Inheritance(strategy=InheritanceType.JOINED)
 public class RespuestaAbierta extends Respuesta{
     private String respuesta_abierta;

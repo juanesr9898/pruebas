@@ -33,12 +33,19 @@ public class Pregunta implements Serializable{
     private Long id;    
     public String pregunta;
     public String respuesta;
+    public String respuestaCorrecta;
+    @Column(nullable = true) //Puede o no terner una imagen la pregunta
+    public String respuesta2;
+    @Column(nullable = true) //Puede o no terner una imagen la pregunta
+    public String respuesta3;
+    @Column(nullable = true) //Puede o no terner una imagen la pregunta
+    public String respuesta4;
     public double peso;
     @Column(nullable = true) //Puede o no terner una imagen la pregunta
     public String imagen;   
     // Que columna en la tabla Preguntas tiene la FK (Llave foranea)
     // Varias preguntas estan en una prueba
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "Prueba_id")
     private Prueba prueba;
      

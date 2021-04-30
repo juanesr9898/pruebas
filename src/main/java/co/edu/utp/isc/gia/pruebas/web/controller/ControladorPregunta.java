@@ -27,6 +27,11 @@ public class ControladorPregunta {
         return servicioPregunta.guardar(preguntaDto); 
     }
     
+    @GetMapping("list/{id}")
+    public List<PreguntaDto> FindAllByUser(@PathVariable("id") Long id) throws MensajeException{
+        return servicioPregunta.FindAllByUser(id);
+    }
+    
     @GetMapping()
     public List<PreguntaDto> listarPreguntas() throws MensajeException{      
         return servicioPregunta.listarPreguntas();

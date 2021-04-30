@@ -1,14 +1,8 @@
 package co.edu.utp.isc.gia.pruebas.web.dto;
 
-import co.edu.utp.isc.gia.pruebas.data.entity.Prueba;
-import co.edu.utp.isc.gia.pruebas.data.entity.Usuario;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonProperty.Access;
 import java.io.Serializable;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -31,7 +25,14 @@ public class PreguntaDto implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;    
     public String pregunta;
+    public String respuestaCorrecta;
     public String respuesta;
+    @Column(nullable = true) //Puede o no terner una imagen la pregunta
+    public String respuesta2;
+    @Column(nullable = true) //Puede o no terner una imagen la pregunta
+    public String respuesta3;
+    @Column(nullable = true) //Puede o no terner una imagen la pregunta
+    public String respuesta4;
     private double peso;
     @Column(nullable = true) //Puede o no terner una imagen la pregunta
     public String imagen; 

@@ -14,7 +14,7 @@ import lombok.Setter;
 @Setter
 @Getter
 @Entity
-@Table(name = "Respuestas_Multiples")
+@Table(name = "Respuesta_Multiple")
 //@Inheritance(strategy=InheritanceType.JOINED)
 public class RespuestaMultiple extends Respuesta{
     private String respuesta_opcion_multiple;

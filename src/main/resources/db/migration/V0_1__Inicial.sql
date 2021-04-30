@@ -26,6 +26,10 @@ CREATE TABLE IF NOT EXISTS Preguntas(
     peso DOUBLE,
     pregunta VARCHAR(255),
     respuesta VARCHAR(255),
+    respuesta2 VARCHAR(255),
+    respuesta3 VARCHAR(255),
+    respuesta4 VARCHAR(255),
+    respuestaCorrecta VARCHAR(255),
     Prueba_ID BIGINT, 
     FOREIGN KEY(Prueba_ID) REFERENCES Pruebas(id)
 );
@@ -43,9 +47,9 @@ CREATE TABLE IF NOT EXISTS Notas(
 CREATE TABLE IF NOT EXISTS Respuestas(
     dtype VARCHAR(31) NOT NULL,
     id BIGINT AUTO_INCREMENT PRIMARY KEY ,
-    Respuestas_abiertas VARCHAR(255),
-    Respuestas_Multiples INTEGER,
-    Respuestas_Unica INTEGER,
+    Respuesta_Abierta VARCHAR(255),
+    Respuesta_Multiple INTEGER,
+    Respuesta_Unica INTEGER,
     Estudiante_id BIGINT,
     FOREIGN KEY (Estudiante_id) REFERENCES usuarios(id),
     Prueba_id BIGINT
